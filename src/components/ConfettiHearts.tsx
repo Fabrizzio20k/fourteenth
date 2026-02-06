@@ -1,12 +1,21 @@
 // components/ConfettiHearts.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 
 const HEARTS = ["💕", "💖", "💗", "💝", "❤️", "💓"];
 
 export default function ConfettiHearts() {
+  const [viewportHeight, setViewportHeight] = useState(0);
+  
+  useEffect(() => {
+    const updateViewportHeight = () => setViewportHeight(window.innerHeight);
+    updateViewportHeight();
+    window.addEventListener('resize', updateViewportHeight);
+    return () => window.removeEventListener('resize', updateViewportHeight);
+  }, []);
+
   const [confettiData] = useState(() =>
-    [...Array(12)].map(() => ({
+    [...Array(8)].map(() => ({
       xOffset: Math.random() * 100 - 50,
       duration: 3 + Math.random() * 2,
       delay: Math.random() * 0.3,
@@ -20,10 +29,15 @@ export default function ConfettiHearts() {
         <motion.div
           key={i}
           className="absolute text-4xl"
-          style={{ left: `${data.leftPosition}%`, top: -20 }}
+          style={{ 
+            left: `${data.leftPosition}%`, 
+            top: -20,
+            transform: 'translate3d(0, 0, 0)',
+            willChange: 'transform, opacity'
+          }}
           initial={{ y: -20, opacity: 0, rotate: 0 }}
           animate={{
-            y: ["0vh", "110vh"],
+            y: [0, viewportHeight + 100],
             opacity: [0, 1, 1, 0],
             rotate: [0, 360],
             x: [0, data.xOffset],

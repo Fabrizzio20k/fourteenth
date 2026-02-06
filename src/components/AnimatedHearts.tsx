@@ -15,6 +15,10 @@ export default function AnimatedHearts() {
         <motion.span
           key={i}
           className="text-5xl md:text-6xl"
+          style={{ 
+            transform: 'translate3d(0, 0, 0)',
+            willChange: 'transform'
+          }}
           animate={{
             y: [0, -25, 0],
             rotate: [0, 15, -15, 0],

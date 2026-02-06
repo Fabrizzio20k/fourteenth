@@ -65,6 +65,8 @@ export default function AcceptanceView() {
           <img
             src="/photo.JPG"
             alt="Amor"
+            loading="eager"
+            fetchPriority="high"
             className="w-full h-auto max-h-[45vh] object-cover"
             style={{
               borderRadius: "225px 15px 225px 15px/15px 225px 15px 225px",
