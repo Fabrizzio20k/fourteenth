@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Una pregunta especial 💕",
   description: "Para mi amor en este 14 de febrero",
+  icons: {
+    icon: "/icon.ico",
+  },
 };
 
 export default function RootLayout({

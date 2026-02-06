@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // components/QuestionView.tsx
 "use client";
 
@@ -15,7 +14,7 @@ interface QuestionViewProps {
 }
 
 export default function QuestionView({ onAccept }: QuestionViewProps) {
-  const containerRef = useRef<HTMLDivElement>(null as any);
+  const containerRef = useRef<HTMLDivElement>(null!);
   const {
     noButtonRef,
     noButtonPosition,
@@ -36,7 +35,7 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
         duration: 0.5,
         ease: "easeOut",
       }}
-      className="min-h-screen bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 flex items-center justify-center p-8 overflow-hidden relative"
+      className="h-screen bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 flex items-center justify-center p-4 md:p-8 overflow-hidden relative"
     >
       <FloatingHearts />
 
@@ -49,10 +48,10 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
           stiffness: 100,
           damping: 15,
         }}
-        className="text-center relative z-10 max-w-4xl w-full"
+        className="text-center relative z-10 max-w-4xl w-full flex flex-col justify-center items-center max-h-[90vh]"
       >
         <motion.h1
-          className="font-parisienne text-7xl md:text-9xl text-rose-600 mb-8 px-4"
+          className="font-parisienne text-5xl sm:text-6xl md:text-7xl lg:text-9xl text-rose-600 mb-4 md:mb-8 px-4"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
@@ -79,7 +78,7 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
 function DecorativeLine() {
   return (
     <motion.div
-      className="w-3/4 mx-auto mb-12 h-1 bg-gradient-to-r from-transparent via-rose-300 to-transparent"
+      className="w-3/4 mx-auto mb-6 md:mb-12 h-1 bg-gradient-to-r from-transparent via-rose-300 to-transparent"
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
