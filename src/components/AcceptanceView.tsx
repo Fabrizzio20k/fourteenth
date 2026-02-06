@@ -40,7 +40,7 @@ export default function AcceptanceView() {
             delay: 1,
           }}
         >
-          Sabía que aceptarías mi amor
+          Sabía que aceptarías mi niña hermosa ❤️
         </motion.h1>
 
         <motion.p
