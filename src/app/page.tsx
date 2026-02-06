@@ -15,11 +15,11 @@ export default function Home() {
 
     setTimeout(() => {
       setShowAcceptanceView(true);
-    }, 3000);
+    }, 2500);
 
     setTimeout(() => {
       setAccepted(true);
-    }, 1000);
+    }, 500);
 
     setTimeout(() => {
       setShowTransition(false);

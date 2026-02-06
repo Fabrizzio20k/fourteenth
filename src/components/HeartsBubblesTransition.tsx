@@ -87,7 +87,7 @@ function useGenerateHearts(
 ): HeartBubble[] {
   return useState<HeartBubble[]>(() => {
     const hearts: HeartBubble[] = [];
-    const heartSize = 300;
+    const heartSize = 350;
     const overlapFactor = 0.45;
     const spacing = heartSize * overlapFactor;
 

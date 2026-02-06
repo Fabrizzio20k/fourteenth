@@ -5,8 +5,9 @@ export function useNoButtonLogic(containerRef: RefObject<HTMLDivElement>) {
   const [noButtonPosition, setNoButtonPosition] = useState({ x: 0, y: 0 });
   const [showEncouragement, setShowEncouragement] = useState(false);
   const [escapeCount, setEscapeCount] = useState(0);
-  const noButtonRef = useRef<HTMLButtonElement>(null);
+  const noButtonRef = useRef<HTMLDivElement>(null);
   const encouragementTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastEscapeTimeRef = useRef<number>(0);
 
   const moveButton = () => {
     if (!containerRef.current) return;
@@ -48,8 +49,10 @@ export function useNoButtonLogic(containerRef: RefObject<HTMLDivElement>) {
       );
 
       const threshold = 120;
+      const now = Date.now();
 
-      if (distance < threshold) {
+      if (distance < threshold && now - lastEscapeTimeRef.current > 500) {
+        lastEscapeTimeRef.current = now;
         setEscapeCount((prev) => prev + 1);
         moveButton();
 
@@ -61,7 +64,7 @@ export function useNoButtonLogic(containerRef: RefObject<HTMLDivElement>) {
 
         encouragementTimeoutRef.current = setTimeout(() => {
           setShowEncouragement(false);
-        }, 2500);
+        }, 2000);
       }
     };
 
@@ -86,7 +89,7 @@ export function useNoButtonLogic(containerRef: RefObject<HTMLDivElement>) {
 
     encouragementTimeoutRef.current = setTimeout(() => {
       setShowEncouragement(false);
-    }, 2500);
+    }, 2000);
   };
 
   return {

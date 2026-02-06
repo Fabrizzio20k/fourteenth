@@ -26,15 +26,27 @@ export default function EncouragementTooltip({
   );
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {show && clickCount >= 2 && (
         <motion.div
           key={messageIndex}
-          initial={{ opacity: 0, y: 20, scale: 0.8 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -10, scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="absolute -top-24 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-6 py-3 whitespace-nowrap z-20 border-2 border-rose-300"
+          initial={{ opacity: 0, y: 10, scale: 0.8 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          exit={{
+            opacity: 0,
+            y: 5,
+            scale: 0.9,
+            transition: { duration: 0.3, ease: "easeOut" },
+          }}
+          transition={{
+            duration: 0.3,
+            ease: "easeOut",
+          }}
+          className="absolute -top-24 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-6 py-3 whitespace-nowrap z-30 border-2 border-rose-300 pointer-events-none"
           style={{
             borderRadius: "15px 225px 15px 225px/225px 15px 225px 15px",
             boxShadow: "4px 4px 0px rgba(251, 113, 133, 0.3)",
