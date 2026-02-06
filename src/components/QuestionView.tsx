@@ -1,4 +1,4 @@
-// components/QuestionView.tsx
+// components/QuestionView.tsx - Actualizado para transición suave
 "use client";
 
 import { useRef } from "react";
@@ -28,15 +28,20 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
       ref={containerRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="min-h-screen bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 flex items-center justify-center p-8 overflow-hidden relative"
+      exit={{
+        opacity: 0,
+        scale: 1.05,
+        filter: "blur(10px)",
+      }}
+      transition={{ duration: 0.8, ease: "easeInOut" }}
+      className="min-h-screen bg-linear-to-br from-pink-50 via-red-50 to-rose-100 flex items-center justify-center p-8 overflow-hidden relative"
     >
       <FloatingHearts />
 
       <motion.div
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.95, opacity: 0 }}
         transition={{
           duration: 1.2,
           type: "spring",
@@ -47,7 +52,7 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
       >
         {/* Título */}
         <motion.h1
-          className="text-7xl md:text-9xl text-rose-600 mb-8 px-4"
+          className="font-parisienne text-7xl md:text-9xl text-rose-600 mb-8 px-4"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
@@ -81,7 +86,7 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
 function DecorativeLine() {
   return (
     <motion.div
-      className="w-3/4 mx-auto mb-12 h-1 bg-gradient-to-r from-transparent via-rose-300 to-transparent"
+      className="w-3/4 mx-auto mb-12 h-1 bg-linear-to-r from-transparent via-rose-300 to-transparent"
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
