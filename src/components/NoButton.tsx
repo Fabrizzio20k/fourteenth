@@ -21,8 +21,8 @@ const NoButton = forwardRef<HTMLButtonElement, NoButtonProps>(
           rotate: 0,
         }}
         transition={{
-          x: { type: "spring", stiffness: 300, damping: 20 },
-          y: { type: "spring", stiffness: 300, damping: 20 },
+          x: { type: "spring", stiffness: 150, damping: 25 },
+          y: { type: "spring", stiffness: 150, damping: 25 },
           scale: { type: "spring", stiffness: 200, damping: 15, delay: 1.5 },
           rotate: { type: "spring", stiffness: 200, damping: 15, delay: 1.5 },
         }}
@@ -31,7 +31,7 @@ const NoButton = forwardRef<HTMLButtonElement, NoButtonProps>(
           rotate: -2,
           transition: { duration: 0.3 },
         }}
-        className=" bg-gray-400 text-white px-16 py-6 text-4xl md:text-5xl font-bold cursor-pointer relative hover:bg-gray-500 transition-colors duration-300"
+        className="bg-gray-400 text-white px-10 py-4 text-2xl md:text-3xl font-bold cursor-pointer relative hover:bg-gray-500 transition-colors duration-300"
         style={{
           borderRadius: "15px 225px 15px 225px/225px 15px 225px 15px",
           border: "4px solid #6b7280",

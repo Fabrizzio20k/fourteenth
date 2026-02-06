@@ -19,7 +19,7 @@ export default function BottomMessage() {
         animationDuration={1500}
         padding={[15, 25]}
       >
-        Con todo mi amor 💖
+        Di que si Mieldita ❤️
       </RoughNotation>
     </motion.div>
   );

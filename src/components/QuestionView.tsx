@@ -51,12 +51,12 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
         className="text-center relative z-10 max-w-4xl w-full"
       >
         <motion.h1
-          className="font-parisienne text-7xl md:text-9xl text-rose-600 mb-8 px-4"
+          className="font-parisienne font-bold text-7xl md:text-9xl text-rose-600 mb-8 px-4"
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
         >
-          Hola mi amor ❤️
+          Hola mi amor
         </motion.h1>
 
         <DecorativeLine />

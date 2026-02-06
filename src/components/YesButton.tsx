@@ -23,7 +23,7 @@ export default function YesButton({ onClick }: YesButtonProps) {
         transition: { duration: 0.3, type: "spring", stiffness: 300 },
       }}
       whileTap={{ scale: 0.95 }}
-      className=" bg-rose-500 text-white px-16 py-6 text-4xl md:text-5xl font-bold relative z-10 hover:bg-rose-600 transition-colors duration-300"
+      className="bg-rose-500 text-white px-10 py-4 text-2xl md:text-3xl font-bold relative z-10 hover:bg-rose-600 transition-colors duration-300"
       style={{
         borderRadius: "225px 15px 225px 15px/15px 225px 15px 225px",
         border: "4px solid #be123c",
