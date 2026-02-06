@@ -1,8 +1,6 @@
-// app/page.tsx
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence } from "motion/react";
 import QuestionView from "@/components/QuestionView";
 import AcceptanceView from "@/components/AcceptanceView";
 import HeartsBubblesTransition from "@/components/HeartsBubblesTransition";
@@ -10,25 +8,43 @@ import HeartsBubblesTransition from "@/components/HeartsBubblesTransition";
 export default function Home() {
   const [accepted, setAccepted] = useState(false);
   const [showTransition, setShowTransition] = useState(false);
+  const [showAcceptanceView, setShowAcceptanceView] = useState(false);
 
   const handleAccept = () => {
     setShowTransition(true);
+
+    setTimeout(() => {
+      setShowAcceptanceView(true);
+    }, 3000);
+
     setTimeout(() => {
       setAccepted(true);
+    }, 1000);
+
+    setTimeout(() => {
       setShowTransition(false);
-    }, 4000);
+    }, 9000);
   };
 
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {!accepted && !showTransition && (
+    <div className="relative w-full h-screen overflow-hidden">
+      {!showAcceptanceView && (
+        <div className="absolute inset-0 z-0">
           <QuestionView onAccept={handleAccept} />
-        )}
-        {accepted && <AcceptanceView />}
-      </AnimatePresence>
+        </div>
+      )}
 
-      {showTransition && <HeartsBubblesTransition />}
-    </>
+      {showAcceptanceView && (
+        <div className="absolute inset-0 z-0">
+          <AcceptanceView />
+        </div>
+      )}
+
+      {showTransition && (
+        <div className="absolute inset-0 z-10">
+          <HeartsBubblesTransition />
+        </div>
+      )}
+    </div>
   );
 }

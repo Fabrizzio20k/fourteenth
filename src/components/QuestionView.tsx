@@ -1,4 +1,4 @@
-// components/QuestionView.tsx - Actualizado para transición suave
+// components/QuestionView.tsx - Se oculta completamente al empezar transición
 "use client";
 
 import { useRef } from "react";
@@ -30,18 +30,18 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
       animate={{ opacity: 1 }}
       exit={{
         opacity: 0,
-        scale: 1.05,
-        filter: "blur(10px)",
       }}
-      transition={{ duration: 0.8, ease: "easeInOut" }}
-      className="min-h-screen bg-linear-to-br from-pink-50 via-red-50 to-rose-100 flex items-center justify-center p-8 overflow-hidden relative"
+      transition={{
+        duration: 0.5,
+        ease: "easeOut",
+      }}
+      className="min-h-screen bg-gradient-to-br from-pink-50 via-red-50 to-rose-100 flex items-center justify-center p-8 overflow-hidden relative"
     >
       <FloatingHearts />
 
       <motion.div
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.95, opacity: 0 }}
         transition={{
           duration: 1.2,
           type: "spring",
@@ -50,7 +50,6 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
         }}
         className="text-center relative z-10 max-w-4xl w-full"
       >
-        {/* Título */}
         <motion.h1
           className="font-parisienne text-7xl md:text-9xl text-rose-600 mb-8 px-4"
           initial={{ y: -20, opacity: 0 }}
@@ -60,13 +59,8 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
           Hola mi amor ❤️
         </motion.h1>
 
-        {/* Línea decorativa */}
         <DecorativeLine />
-
-        {/* Carta con pregunta */}
         <QuestionCard />
-
-        {/* Botones */}
         <ActionButtons
           onYesClick={onAccept}
           onNoClick={handleNoClick}
@@ -75,8 +69,6 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
           showEncouragement={showEncouragement}
           clickCount={clickCount}
         />
-
-        {/* Mensaje inferior */}
         <BottomMessage />
       </motion.div>
     </motion.div>
@@ -86,7 +78,7 @@ export default function QuestionView({ onAccept }: QuestionViewProps) {
 function DecorativeLine() {
   return (
     <motion.div
-      className="w-3/4 mx-auto mb-12 h-1 bg-linear-to-r from-transparent via-rose-300 to-transparent"
+      className="w-3/4 mx-auto mb-12 h-1 bg-gradient-to-r from-transparent via-rose-300 to-transparent"
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}

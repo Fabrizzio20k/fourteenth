@@ -1,4 +1,4 @@
-// components/AcceptanceView.tsx
+// components/AcceptanceView.tsx - Aparece instantáneamente
 "use client";
 
 import { motion } from "motion/react";
@@ -8,21 +8,19 @@ import AnimatedHearts from "./AnimatedHearts";
 export default function AcceptanceView() {
   return (
     <motion.div
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0, opacity: 0 }}
-      transition={{ duration: 1, type: "spring", stiffness: 100, damping: 15 }}
+      // Aparece inmediatamente (ya está el fondo rosa cubriendo)
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
       className="min-h-screen bg-gradient-to-br from-rose-600 via-pink-500 to-red-500 flex items-center justify-center p-8"
     >
       <motion.div
-        initial={{ y: 50, opacity: 0, rotateX: 90 }}
-        animate={{ y: 0, opacity: 1, rotateX: 0 }}
+        // El contenido aparece gradualmente mientras se revela
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{
-          delay: 0.5,
-          duration: 1,
-          type: "spring",
-          stiffness: 100,
-          damping: 15,
+          duration: 1.5,
+          ease: "easeOut",
+          delay: 0.5, // Delay para sincronizar con revelación
         }}
         className="text-center bg-white rounded-3xl p-16 shadow-2xl max-w-4xl w-full relative overflow-hidden"
         style={{
@@ -35,37 +33,34 @@ export default function AcceptanceView() {
         <ConfettiHearts />
 
         <motion.h1
-          className="text-6xl md:text-8xl text-rose-600 mb-12 relative z-10"
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          className="font-parisienne text-6xl md:text-8xl text-rose-600 mb-12 relative z-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 1,
-            type: "spring",
-            stiffness: 150,
-            damping: 12,
-            delay: 0.8,
+            ease: "easeOut",
+            delay: 1,
           }}
         >
           Sabía que aceptarías mi amor
         </motion.h1>
 
         <motion.p
-          className="text-4xl text-rose-500 mb-12 relative z-10"
+          className="font-parisienne text-4xl text-rose-500 mb-12 relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3, duration: 0.8, ease: "easeOut" }}
+          transition={{ delay: 1.5, duration: 0.8, ease: "easeOut" }}
         >
           Te amo mucho ❤️✨
         </motion.p>
 
         <motion.div
-          initial={{ scale: 0, rotate: -180, opacity: 0 }}
-          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{
-            delay: 1.8,
-            type: "spring",
-            stiffness: 150,
-            damping: 12,
+            delay: 2,
+            duration: 1,
+            ease: "easeOut",
           }}
           className="mt-8 relative z-10"
         >
